@@ -5,7 +5,7 @@ import ErrorPage from "../pages/error/index";
 import GenrePage from "../pages/generepage/index";
 import GamePage from "../pages/gamepage/index";
 import SearchPage from "../pages/searchpage/index";
-import RegisterPage from "../pages/registerpage/index";
+import RegisterPage from "../pages/registerPage/index";
 import { LoginPage } from "../pages/login/index";
 import AccountPage from "../components/AccountPage"
 import AccountProfile from "../pages/profile/index"

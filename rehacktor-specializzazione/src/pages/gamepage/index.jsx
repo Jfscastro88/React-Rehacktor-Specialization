@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import useFetchSolution from '../../hook/useFetchSolution';
 import ToggleFavorite from "../../components/ToggleFavorite";
 import Chatbox from "../../components/Chatbox";

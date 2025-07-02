@@ -1,4 +1,4 @@
-import { useSearchParams } from "react-router";
+import { useSearchParams } from "react-router-dom";
 import  useFetchSolution from "../../hook/useFetchSolution";
 import CardGame from "../../components/CardGame";
 

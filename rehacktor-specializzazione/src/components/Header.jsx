@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link as HeroLink, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar, Button } from "@heroui/react";
-import { Link as RouterLink, useNavigate } from "react-router";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import GenresDropdown from '../components/GenresDropdown';
 import Searchbar from '../components/Searchbar';
 import supabase from "../supabase/supabase-client";

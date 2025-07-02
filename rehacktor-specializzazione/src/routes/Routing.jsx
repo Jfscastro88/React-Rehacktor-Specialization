@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import HomePage from "../pages/homepage/index";
 import Layout from "../layout/Layout";
 import ErrorPage from "../pages/error/index";
@@ -12,7 +12,7 @@ import AccountProfile from "../pages/profile/index"
 
 export default function Routing() { 
     return (
-        <BrowserRouter>
+        <HashRouter>
             <Routes>
                 <Route element={<Layout />}>
                     <Route path="/" element={<HomePage />} />
@@ -26,6 +26,6 @@ export default function Routing() {
                     <Route path="/profile" element={<AccountProfile />}/>
                 </Route>
             </Routes>
-        </BrowserRouter>
+        </HashRouter>
     );
 }

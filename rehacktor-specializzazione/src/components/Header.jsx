@@ -5,9 +5,18 @@ import GenresDropdown from '../components/GenresDropdown';
 import Searchbar from '../components/Searchbar';
 import supabase from "../supabase/supabase-client";
 import SessionContext from "../context/SessionContext";
+import logoImg from "../assets/pictures/logo.png";
 
 function Logo() {
-    return <span className="text-lg font-bold">LOGO</span>;
+    return (
+    <RouterLink to="/">
+        <img
+        src={logoImg}
+        alt="Logo Rehacktor"
+        className="h-8 w-auto"
+        />
+    </RouterLink>
+    );
 }
 
 function Header() {
@@ -44,7 +53,7 @@ function Header() {
         <NavbarBrand>
         <Logo />
         <HeroLink as={RouterLink} to="/" color="foreground">
-        <p className="ml-2 font-bold text-inherit">Rehacktor</p>
+        <p className="ml-2 font-bold text-inherit">Gaming and React</p>
         </HeroLink>
         </NavbarBrand>
         

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import supabase from "../../supabase/supabase-client";
 import { ConfirmSchema, getErrors, getFieldError } from "../../lib/validationForm";
 import { Form, Input, Button } from "@heroui/react";
+import { Link } from "react-router-dom";
 
 export default function RegisterPage() {
     const navigate = useNavigate();
@@ -64,7 +65,8 @@ export default function RegisterPage() {
         }));
     };
     return (
-        <div className="container mx-auto p-6">
+        <div className="max-w-md mx-auto mt-25 p-6 bg-white shadow-xl rounded-xl space-y-6">
+            <h2 className="text-3xl font-bold text-center">Register</h2>
         <Form
         onSubmit={onSubmit}
         validationBehavior="aria"            
@@ -137,10 +139,14 @@ export default function RegisterPage() {
         errorMessage={formErrors.password}
         />
         
-        <Button type="submit" variant="primary">
-        Register
-        </Button>
+        <Button type="submit" variant="shadow" className="w-full">Register</Button>
         </Form>
+        <p className="mt-4 text-center text-sm text-gray-600">
+            Hai già un account?{" "}
+        <Link to="/login" className="text-blue-500 hover:underline">
+            Accedi
+        </Link>
+        </p>
         </div>
     );
 };

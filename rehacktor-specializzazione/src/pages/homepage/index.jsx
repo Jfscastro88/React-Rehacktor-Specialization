@@ -9,7 +9,7 @@ function HomePage() {
     
     return ( 
         <main className="px-4 py-6">
-        <h1 className="text-2xl font-bold mb-4">Home Page</h1>
+        <h1 className="text-4xl font-bold text-center mb-10">GameNest – A cozy nest where all your favorite games live.</h1>
         
         {loading && <p className="text-gray-600">Loading games…</p>}
         {error && <p className="text-red-500">Errore: {error}</p>}

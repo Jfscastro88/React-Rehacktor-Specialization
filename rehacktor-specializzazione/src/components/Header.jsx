@@ -53,7 +53,7 @@ function Header() {
         <NavbarBrand>
         <Logo />
         <HeroLink as={RouterLink} to="/" color="foreground">
-        <p className="ml-2 font-bold text-inherit">Gaming and React</p>
+        <p className="ml-2 text-2xl font-bold text-inherit">GameNest</p>
         </HeroLink>
         </NavbarBrand>
         

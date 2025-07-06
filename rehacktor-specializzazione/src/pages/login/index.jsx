@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import supabase from "../../supabase/supabase-client";
 import { FormSchemaLogin, ConfirmSchemaLogin, getErrors, getFieldError} from "../../lib/validationForm"
 import { Form, Input, Button } from "@heroui/react";
+import { Link } from "react-router-dom";
 
 export function LoginPage() {
     const navigate = useNavigate();
@@ -58,8 +59,8 @@ export function LoginPage() {
     };
     
     return (
-        <div className="max-w-md mx-auto mt-10 p-6 bg-white shadow-xl rounded-xl space-y-6">
-        <h2 className="text-2xl font-bold text-center">Login</h2>
+        <div className="max-w-md mx-auto mt-25 p-6 bg-white shadow-xl rounded-xl space-y-6">
+        <h2 className="text-3xl font-bold text-center">Login</h2>
         
         <Form
         onSubmit={onSubmit}
@@ -95,10 +96,16 @@ export function LoginPage() {
         errorMessage={formErrors.password}
         />
         
-        <Button type="submit" variant="primary" className="w-full">
+        <Button type="submit" variant="shadow" className="w-full">
         Login
         </Button>
         </Form>
+        <p className="text-center text-sm text-gray-600">
+            Non hai un account?{" "}
+        <Link to="/register" className="text-blue-500 hover:underline" >
+            Registrati
+        </Link>
+        </p>  
         </div>
     );
 }

@@ -68,6 +68,7 @@ export default function Avatar({ url, size, onUpload }) {
         accept="image/*"
         onChange={uploadAvatar}
         disabled={uploading}
+        className="hidden"
         />
         </div>
         </div>

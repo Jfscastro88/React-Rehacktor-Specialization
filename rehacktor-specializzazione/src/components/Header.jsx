@@ -101,7 +101,7 @@ function Header() {
             </DropdownItem>
             <DropdownItem>
             <HeroLink as={RouterLink} to="/account" color="foreground">
-            Account
+            Account Settings
             </HeroLink>
             </DropdownItem>
             <DropdownItem key="logout" color="danger" onClick={signOut}>

@@ -7,8 +7,8 @@ import GamePage from "../pages/gamepage/index";
 import SearchPage from "../pages/searchpage/index";
 import RegisterPage from "../pages/registerPage/index";
 import { LoginPage } from "../pages/login/index";
-import AccountPage from "../components/AccountPage"
-import AccountProfile from "../pages/profile/index"
+import AccountPage from "../pages/accountpage/index";
+import ProfilePage from "../pages/profile/index";
 
 export default function Routing() { 
     return (
@@ -23,7 +23,7 @@ export default function Routing() {
                     <Route path="/register" element={< RegisterPage />}/>
                     <Route path="/login" element={<LoginPage />}/>
                     <Route path="/account" element={<AccountPage />}/>
-                    <Route path="/profile" element={<AccountProfile />}/>
+                    <Route path="/profile" element={<ProfilePage />}/>
                 </Route>
             </Routes>
         </HashRouter>

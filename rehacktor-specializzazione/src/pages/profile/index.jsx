@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import SessionContext from "../../context/SessionContext";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import FavoritesContext from "../../context/FavoritesContext";
-import { Link } from "react-router-dom";
+import SessionContext from "../../context/SessionContext";
 import { Button } from "@heroui/react";
 
 export default function ProfilePage() {
@@ -12,29 +12,18 @@ export default function ProfilePage() {
     
     const firstName = session?.user.user_metadata.first_name;
     const avatarUrl = session?.user.user_metadata.avatar_url;
-    
+        
     return (
         <main className="max-w-4xl mx-auto mt-10 p-6 bg-white shadow-xl rounded-xl">
         <div className="flex items-center space-x-4 mb-6">
-        {avatarUrl ? (
-            <img
-            src={avatarUrl}
-            alt={`${firstName}'s avatar`}
-            className="w-16 h-16 rounded-full object-cover"
-            />
-        ) : (
-            <div className="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center text-2xl text-gray-500">
-            {firstName?.[0]}
-            </div>
-        )}
-        <h2 className="text-2xl font-bold">Ciao, {firstName}!</h2>
+        <h2 className="text-3xl font-bold">Ciao, {firstName}!</h2>
         </div>
+        
         <details className="group" open>
         <summary className="flex justify-between items-center cursor-pointer text-lg font-semibold mb-4">
         <span>I tuoi giochi preferiti</span>
-        <span className="transition-transform duration-200 group-open:rotate-180">▼</span>
+        <span className="transition-transform duration-200 group-open:rotate-180">🡇</span>
         </summary>
-        
         {favorites.length === 0 ? (
             <p className="text-gray-500">Non ci sono preferiti al momento...</p>
         ) : (
@@ -54,7 +43,7 @@ export default function ProfilePage() {
                 {game.game_name}
                 </h3>
                 <div className="flex justify-between items-center">
-                <Link to={`/games/${game.slug}/${game.game_id}`}>  
+                <Link to={`/games/${game.slug}/${game.game_id}`}>
                 <Button size="sm">See Details</Button>
                 </Link>
                 <button

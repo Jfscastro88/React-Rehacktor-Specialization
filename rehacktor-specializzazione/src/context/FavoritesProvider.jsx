@@ -1,6 +1,6 @@
 import { useContext, useState, useCallback, useEffect } from "react";
 import supabase from "../supabase/supabase-client"
-import SessionContext from "../context/SessionContext"
+import SessionContext from "./SessionContext";
 import FavoritesContext from "../context/FavoritesContext"
 
 export default function FavoritesProvider({ children }) {

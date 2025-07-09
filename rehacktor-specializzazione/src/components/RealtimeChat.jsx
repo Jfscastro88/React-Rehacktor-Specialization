@@ -3,18 +3,6 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import supabase from '../supabase/supabase-client';
 
-const chatContainer = {
-    marginTop: '5px',
-    padding: '0px 3px',
-    width: '100%',
-    height: '50vh',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    backgroundColor: 'ffffff',
-    overflowY: 'scroll',
-    color: 'black',
-}
-
 dayjs.extend(relativeTime);
 
 export default function RealtimeChat ({ data }) {
@@ -66,17 +54,32 @@ export default function RealtimeChat ({ data }) {
     }, [messages]);
     
     return (
-        <div style={chatContainer} ref={messageRef}>
-            {loadingInitial && <progress></progress>}
-            {error && <article> {error}</article>}
-            {messages && 
-            messages.map((message) => (
-                <article key={message.id}>
-                    <p>{message.profile_username}</p>
-                    <small>{message.content}</small>
-                    <p>{dayjs().to(dayjs(message.created_at))} </p>
-                </article>
-            ))}
+        <div ref={messageRef}
+        className="flex-1 overflow-y-auto p-4 bg-gray-100 space-y-2 rounded-t-lg shadow-inner">
+        {loadingInitial && (
+            <div className="w-full">
+            <progress className="w-full h-96 rounded-full bg-gray-300" />
+            </div>
+        )}
+        {error && (
+            <article className="p-4 bg-red-100 text-red-700 rounded-lg shadow-sm">
+            {error}
+            </article>
+        )}
+        {messages?.map(message => (
+            <article key={message.id}
+            className="p-4 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-200 hover:bg-gray-50">
+            <p className="text-sm font-semibold text-gray-600">
+            {message.profile_username}
+            </p>
+            <p className="mt-1 text-base text-gray-800 leading-relaxed">
+            {message.content}
+            </p>
+            <p className="mt-2 text-xs text-gray-400 text-right">
+            {dayjs().to(dayjs(message.created_at))}
+            </p>
+            </article>
+        ))}
         </div>
     );
 }

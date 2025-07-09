@@ -1,16 +1,19 @@
+import React, { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
-import useFetchSolution from '../../hook/useFetchSolution';
+import useFetchSolution from "../../hook/useFetchSolution";
 import ToggleFavorite from "../../components/ToggleFavorite";
 import Chatbox from "../../components/Chatbox";
 import RealtimeChat from "../../components/RealtimeChat";
-
+import SessionContext from "../../context/SessionContext";
+import { ChatBubbleOvalLeftEllipsisIcon } from '@heroicons/react/24/outline';
 
 function GamePage() {
-    
     const { id } = useParams();
+    const { session } = useContext(SessionContext);
+    const isAuthenticated = Boolean(session?.user);
     
+    const [chatOpen, setChatOpen] = useState(false);
     const initialUrl = `https://api.rawg.io/api/games/${id}?key=e83c62b7168e4b73b7d8c2a6fcb17f81`;
-    
     const { data, loading, error } = useFetchSolution(initialUrl);
     
     if (loading) return <p>Loading game details…</p>;
@@ -35,8 +38,7 @@ function GamePage() {
             <img
             src={data.background_image}
             alt={`Background of ${data.name}`}
-            className="rounded-xl shadow-md object-cover max-h-[400px] w-full"
-            />
+            className="rounded-xl shadow-md object-cover max-h-[400px] w-full"/>
             </div>
             
             <div className="px-6 py-4 border-t border-gray-200">
@@ -52,26 +54,43 @@ function GamePage() {
             <span className="font-semibold">Released:</span> {data.released}
             </div>
             </div>
-            
-            <div className="flex-1"></div>
             </div>
         )}
         
-        {data && (
-            <div className="fixed bottom-35 right-4 w-full max-w-sm lg:max-w-md bg-white rounded-2xl shadow-lg flex flex-col overflow-hidden h-96">
-            <div className="bg-gray-100 px-4 py-2 border-b border-gray-200">
-            <h4 className="text-lg font-semibold text-gray-800">Live Chat</h4>
-            </div>
+        {isAuthenticated && data && (
+            <>
+            <button
+            onClick={() => setChatOpen(!chatOpen)}
+            className="fixed bottom-6 mb-35 right-6 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-lg transition"
+            aria-label={chatOpen ? "Close chat" : "Open chat"}
+            >
+            <ChatBubbleOvalLeftEllipsisIcon className="h-6 w-6" />
+            </button>
             
-            <div className="flex-1 p-4 overflow-y-auto">
-            <RealtimeChat data={data} />
-            </div>
-            <div className="px-4 py-3 bg-gray-50 border-t border-gray-200">
-            <Chatbox data={data} />
-            </div>
-            </div>
+            {chatOpen && (
+                <div className="fixed bottom-20 mb-15 right-6 w-full max-w-sm lg:max-w-md bg-white rounded-2xl shadow-lg flex flex-col overflow-hidden h-96">
+                <div className="bg-gray-100 px-4 py-2 border-b border-gray-200">
+                <div className="flex justify-between items-center">
+                <h4 className="text-lg font-semibold text-gray-800">Live Chat</h4>
+                <button onClick={() => setChatOpen(false)} className="text-gray-600 hover:text-gray-800">
+                ×
+                </button>
+                </div>
+                </div>
+                
+                <div className="flex-1 p-4 overflow-y-auto">
+                <RealtimeChat data={data} />
+                </div>
+                
+                <div className="px-4 py-3 bg-gray-50 border-t border-gray-200">
+                <Chatbox data={data} />
+                </div>
+                </div>
+            )}
+            </>
         )}
         </>
     );
 }
+
 export default GamePage;

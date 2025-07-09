@@ -11,7 +11,7 @@ function GenrePage () {
     
     return (
         <main className="px-4 py-6">
-        <h2 className="text-2xl font-bold mb-4 capitalize">
+        <h2 className="text-3xl font-bold text-center mb-10">
         Welcome to the {genre} games!
         </h2>
         

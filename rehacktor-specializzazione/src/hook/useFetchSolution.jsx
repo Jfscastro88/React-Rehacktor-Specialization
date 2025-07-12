@@ -46,5 +46,4 @@ function useFetchSolution(initialUrl) {
         updateUrl: setUrl
     };
 };
-
 export default useFetchSolution;

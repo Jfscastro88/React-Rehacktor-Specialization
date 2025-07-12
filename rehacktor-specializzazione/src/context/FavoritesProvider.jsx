@@ -3,7 +3,7 @@ import supabase from "../supabase/supabase-client"
 import SessionContext from "./SessionContext";
 import FavoritesContext from "../context/FavoritesContext"
 
-export default function FavoritesProvider({ children }) {
+function FavoritesProvider({ children }) {
     const { session } = useContext(SessionContext);
     const [favorites, setFavorites] = useState([]);
     
@@ -82,3 +82,4 @@ export default function FavoritesProvider({ children }) {
             </FavoritesContext.Provider>
         );
     }
+export default FavoritesProvider;

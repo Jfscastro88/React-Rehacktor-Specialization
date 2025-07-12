@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Input } from "@heroui/react";
+import { useTranslation } from 'react-i18next';
 
 function Searchbar() {
+    const { t } = useTranslation();
     const navigate = useNavigate();
     const [ search, setSearch ] = useState("");
     const [ariaInvalid, setAriaInvalid] = useState(false);
@@ -28,7 +30,7 @@ function Searchbar() {
             input: "text-xs text-center leading-none",
             inputWrapper: "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
         }}
-        placeholder={ariaInvalid ? "Devi cercare qualcosa" : "Search a game"}
+        placeholder={ariaInvalid ? "You have to look for something" : t('search_placeholder')}
         size="md"
         type="search"
         name="search"
@@ -37,11 +39,9 @@ function Searchbar() {
         onChange={(event) => {
             setSearch(event.target.value);
             if (ariaInvalid) setAriaInvalid(false);
-        }}
-        />
+        }}/>
         </fieldset>
         </form>
     );
 }
-
 export default Searchbar;

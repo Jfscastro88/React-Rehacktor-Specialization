@@ -6,8 +6,10 @@ import Chatbox from "../../components/Chatbox";
 import RealtimeChat from "../../components/RealtimeChat";
 import SessionContext from "../../context/SessionContext";
 import { ChatBubbleOvalLeftEllipsisIcon } from '@heroicons/react/24/outline';
+import { useTranslation } from 'react-i18next';
 
 function GamePage() {
+    const { t } = useTranslation();
     const { id } = useParams();
     const { session } = useContext(SessionContext);
     const isAuthenticated = Boolean(session?.user);
@@ -16,13 +18,13 @@ function GamePage() {
     const initialUrl = `https://api.rawg.io/api/games/${id}?key=e83c62b7168e4b73b7d8c2a6fcb17f81`;
     const { data, loading, error } = useFetchSolution(initialUrl);
     
-    if (loading) return <p>Loading game details…</p>;
+    if (loading) return <p>{t('Loading game details')}…</p>;
     
     return (
         <>
         {error && (
             <div className="bg-red-100 text-red-700 p-4 rounded-md shadow mb-4 max-w-5xl mx-auto">
-            <h1 className="text-lg font-semibold">Errore</h1>
+            <h1 className="text-lg font-semibold">{t('Error')}</h1>
             <p>{error}</p>
             </div>
         )}
@@ -42,16 +44,16 @@ function GamePage() {
             </div>
             
             <div className="px-6 py-4 border-t border-gray-200">
-            <h2 className="text-xl font-semibold text-gray-700 mb-2">About</h2>
+            <h2 className="text-xl font-semibold text-gray-700 mb-2">{t('About')}</h2>
             <p className="text-gray-700 leading-relaxed">{data.description_raw}</p>
             </div>
             
             <div className="px-6 py-2 flex justify-end space-x-8 border-t border-gray-200">
             <div className="text-gray-600 text-sm">
-            <span className="font-semibold">Rating:</span> {data.rating}
+            <span className="font-semibold">{t('Rating')}:</span> {data.rating}
             </div>
             <div className="text-gray-600 text-sm">
-            <span className="font-semibold">Released:</span> {data.released}
+            <span className="font-semibold">{t('Released')}:</span> {data.released}
             </div>
             </div>
             </div>
@@ -71,7 +73,7 @@ function GamePage() {
                 <div className="fixed bottom-20 mb-15 right-6 w-full max-w-sm lg:max-w-md bg-white rounded-2xl shadow-lg flex flex-col overflow-hidden h-96">
                 <div className="bg-gray-100 px-4 py-2 border-b border-gray-200">
                 <div className="flex justify-between items-center">
-                <h4 className="text-lg font-semibold text-gray-800">Live Chat</h4>
+                <h4 className="text-lg font-semibold text-gray-800">{t('Live Chat')}</h4>
                 <button onClick={() => setChatOpen(false)} className="text-gray-600 hover:text-gray-800">
                 ×
                 </button>

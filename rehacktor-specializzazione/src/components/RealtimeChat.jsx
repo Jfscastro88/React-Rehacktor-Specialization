@@ -5,7 +5,7 @@ import supabase from '../supabase/supabase-client';
 
 dayjs.extend(relativeTime);
 
-export default function RealtimeChat ({ data }) {
+function RealtimeChat ({ data }) {
     const [ messages, setMessages ] = useState([]);
     const [ loadingInitial, setLoadingInitial ] = useState(false);
     const [ error, setError ] = useState("");
@@ -83,3 +83,4 @@ export default function RealtimeChat ({ data }) {
         </div>
     );
 }
+export default RealtimeChat;

@@ -5,8 +5,10 @@ import { ConfirmSchema, getErrors, getFieldError } from "../../lib/validationFor
 import { Form, Input, Button } from "@heroui/react";
 import { Link } from "react-router-dom";
 import toast from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
 
-export default function RegisterPage() {
+function RegisterPage() {
+    const { t } = useTranslation();
     const navigate = useNavigate();
     const [formSubmitted, setFormSubmitted] = useState(false);
     const [formErrors, setFormErrors] = useState({});
@@ -40,9 +42,9 @@ export default function RegisterPage() {
                 }
             });
             if (error) {
-                toast.error("Signing up error !");
+                toast.error(t("Signing up error !"));
             } else {
-                toast.success("Signed up !");
+                toast.success(t("Signed up !"));
                 await new Promise((resolve) => setTimeout(resolve, 1000));
                 navigate("/");
             }
@@ -67,7 +69,7 @@ export default function RegisterPage() {
     };
     return (
         <div className="max-w-md mx-auto mt-25 p-6 bg-white shadow-xl rounded-xl space-y-6">
-            <h2 className="text-3xl font-bold text-center">Register</h2>
+            <h2 className="text-3xl font-bold text-center">{t('Register')}</h2>
         <Form
         onSubmit={onSubmit}
         validationBehavior="aria"            
@@ -90,7 +92,7 @@ export default function RegisterPage() {
         
         <Input
         name="firstName"
-        label="First Name"
+        label={t('First Name')}
         isRequired Required
         value={formState.firstName}
         onChange={setField("firstName")}
@@ -102,7 +104,7 @@ export default function RegisterPage() {
         
         <Input
         name="lastName"
-        label="Last Name"
+        label={t('Last Name')}
         isRequired Required
         value={formState.lastName}
         onChange={setField("lastName")}
@@ -131,7 +133,7 @@ export default function RegisterPage() {
         type="password"
         isRequired
         minLength={8}
-        placeholder="At least 8 characters"
+        placeholder={t('At least 8 characters')}
         value={formState.password}
         onChange={setField("password")}
         onBlur={onBlur("password")}
@@ -140,14 +142,15 @@ export default function RegisterPage() {
         errorMessage={formErrors.password}
         />
         
-        <Button type="submit" variant="shadow" className="w-full">Register</Button>
+        <Button type="submit" variant="shadow" className="w-full">{t('Register')}</Button>
         </Form>
         <p className="mt-4 text-center text-sm text-gray-600">
-            Already have an account?{" "}
+            {t('Already have an account?')}{" "}
         <Link to="/login" className="text-blue-500 hover:underline">
-            Log in
+            {t('Login')}
         </Link>
         </p>
         </div>
     );
 };
+export default RegisterPage;

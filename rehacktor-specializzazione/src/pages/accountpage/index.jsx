@@ -5,9 +5,11 @@ import Avatar from "../../components/Avatar";
 import { Input, Button } from "@heroui/react"; 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUpload } from "@fortawesome/free-solid-svg-icons";
+import toast from "react-hot-toast";
+import { useTranslation } from 'react-i18next';
 
-export default function AccountPage() {
-    
+function AccountPage() {
+    const { t } = useTranslation();    
     const { session } = useContext(SessionContext);
     const [loading, setLoading] = useState(true);
     const [username, setUsername] = useState(null);
@@ -49,10 +51,10 @@ export default function AccountPage() {
     }, [session]);
     
     if (!session || !session.user) {
-        return <p>Caricamento sessione utente…</p>;
+        return <p>{t('Loading user session')}…</p>;
     }
     if (loading) {
-        return <p>Caricamento profilo…</p>;
+        return <p>{t('Loading profile')}…</p>;
     }
     
     const updateProfile = async (event, newAvatarUrl) => {
@@ -71,35 +73,29 @@ export default function AccountPage() {
         
         const { error } = await supabase.from("profiles").upsert(updates);
         if (error) {
-            alert(error.message);
+            toast.error(error.message);
         } else {
             setAvatarUrl(newAvatarUrl);
         }
         setLoading(false);
     };
     
-    
     return (
         <div className="max-w-xl mx-auto mt-10 px-6 py-8 bg-white shadow-xl rounded-2xl space-y-6">
         <h2 className="text-2xl font-bold text-gray-800 text-center">
-        Account Settings
+        {t('Account Settings')} 
         </h2>
         
         <form onSubmit={updateProfile} className="space-y-6">
         <div className="flex flex-col items-center">
-        <Avatar
-        url={avatar_url}
-        size={150}
-        onUpload={(event, url) => updateProfile(event, url)}
-        />
+        <Avatar url={avatar_url} size={150}
+        onUpload={(event, url) => updateProfile(event, url)}/>
         
-        <button
-        type="button"
+        <button type="button"
         onClick={() => document.getElementById("single")?.click()}
         disabled={loading}
-        className="flex mt-5 items-center px-4 py-2 bg-blue-100 text-blue-600 rounded hover:bg-blue-200 transition"
-        >
-        <FontAwesomeIcon icon={faUpload} className="mr-2" /> Upload new photo
+        className="flex mt-5 items-center px-4 py-2 bg-blue-100 text-blue-600 rounded hover:bg-blue-200 transition">
+        <FontAwesomeIcon icon={faUpload} className="mr-2" />{t('Upload new photo')} 
         </button>
         </div>
         
@@ -108,40 +104,39 @@ export default function AccountPage() {
         type="email"
         value={session.user.email}
         isDisabled
-        className="w-full"
-        />
+        className="w-full"/>
         
         <Input
         id="username"
-        label="Username"
+        label={t('Username')}
         isRequired
         value={username || ""}
         onChange={(e) => setUsername(e.target.value)}
-        className="w-full"
-        />
+        className="w-full"/>
         
         <Input
         id="first_name"
-        label="First Name"
+        label={t('First Name')}
+        isRequired
         value={first_name || ""}
         onChange={(e) => setFirstName(e.target.value)}
-        className="w-full"
-        />
+        className="w-full"/>
         
         <Input
         id="last_name"
-        label="Last Name"
+        label={t('Last Name')}
+        isRequired
         value={last_name || ""}
         onChange={(e) => setLastName(e.target.value)}
-        className="w-full"
-        />
+        className="w-full"/>
         
         <div className="flex justify-center">
         <Button type="submit" variant="solid" color="primary" isDisabled={loading}>
-        {loading ? "Updating..." : "Update"}
+        {loading ? t('Updating') : t('Update')}
         </Button>
         </div>
         </form>
         </div>
     );
 }
+export default AccountPage;

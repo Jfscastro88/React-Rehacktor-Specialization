@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import supabase from '../supabase/supabase-client'
+import toast from 'react-hot-toast'
 
-export default function Avatar({ url, size, onUpload }) {
+function Avatar({ url, size, onUpload }) {
     const [avatarUrl, setAvatarUrl] = useState(null)
     const [uploading, setUploading] = useState(false)
     
@@ -25,7 +26,6 @@ export default function Avatar({ url, size, onUpload }) {
     const uploadAvatar = async (event) => {
         try {
             setUploading(true)
-            
             if (!event.target.files || event.target.files.length === 0) {
                 throw new Error('You must select an image to upload.')
             }
@@ -43,7 +43,7 @@ export default function Avatar({ url, size, onUpload }) {
             
             onUpload(event, filePath)
         } catch (error) {
-            alert(error.message)
+            toast.error(error.message)
         } finally {
             setUploading(false)
         }
@@ -56,10 +56,9 @@ export default function Avatar({ url, size, onUpload }) {
             src={avatarUrl}
             alt="Avatar"
             className="avatar image"
-            style={{ height: size, width: size, boxShadow: "3px 3px 8px black" }}
-            />
+            style={{ height: size, width: size, boxShadow: "3px 3px 8px black" }}/>
         ) : (
-            <div className="avatar no-image" style={{ height: size, width: size }} />
+            <div className="avatar no-image" style={{ height: size, width: size }}/>
         )}
         <div style={{ width: size }}>
         <input
@@ -68,9 +67,9 @@ export default function Avatar({ url, size, onUpload }) {
         accept="image/*"
         onChange={uploadAvatar}
         disabled={uploading}
-        className="hidden"
-        />
+        className="hidden"/>
         </div>
         </div>
     )
 }
+export default Avatar;

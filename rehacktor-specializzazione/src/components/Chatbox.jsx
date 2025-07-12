@@ -2,8 +2,10 @@ import { useContext } from "react";
 import supabase from "../supabase/supabase-client";
 import SessionContext from "../context/SessionContext";
 import { ChatBubbleOvalLeftEllipsisIcon } from "@heroicons/react/24/outline";
+import { useTranslation } from "react-i18next";
 
-export default function Chatbox({ data }) {
+function Chatbox({ data }) {
+    const { t } = useTranslation();
     const { session } = useContext(SessionContext);
     
     const handleMessageSubmit = async ( event ) => {
@@ -33,7 +35,7 @@ export default function Chatbox({ data }) {
     return (
         <>
         <h4 className="text-xl font-semibold text-gray-800 mb-4">
-        Gamers Chat
+        {t('Gamers Chat')}
         </h4>
         
         <div className="bg-white rounded-2xl shadow-inner overflow-hidden">
@@ -41,19 +43,15 @@ export default function Chatbox({ data }) {
         className="flex items-center p-4 border-t border-gray-200 bg-white rounded-b-lg">
         <ChatBubbleOvalLeftEllipsisIcon className="h-6 w-6 text-gray-400 mr-3" />
         
-        <input
-        type="text"
-        name="message"
-        placeholder="Scrivi un messaggio…"
+        <input type="text" name="message" placeholder={t('Write a message…')}
         className="flex-1 border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"/>
         
-        <button
-        type="submit"
-        className="ml-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-2 transition">
-        Send
+        <button type="submit" className="ml-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-2 transition">
+        {t('Send')}
         </button>
         </form>
         </div>
         </>
     );
 }
+export default Chatbox;

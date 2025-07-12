@@ -4,8 +4,11 @@ import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
 import SessionContext from "../context/SessionContext";
 import FavoritesContext from "../context/FavoritesContext";
+import toast from "react-hot-toast";
+import { useTranslation } from 'react-i18next';
 
 export default function ToggleFavorite({ game }) {
+    const { t } = useTranslation();
     const { session } = useContext(SessionContext);
     const { favorites, addFavorite, removeFavorite } = useContext(FavoritesContext);
     
@@ -20,10 +23,10 @@ export default function ToggleFavorite({ game }) {
     const handleToggle = () => {
         console.log("Clicked! isFavorite:", isFavorite);
         if (isFavorite) {
-            console.log("Removing...");
+            toast.error(t("Removing..."));
             removeFavorite(game.id);
         } else {
-            console.log("Adding...");
+            toast.success(t("Adding..."));
             addFavorite(game);
         }
     };

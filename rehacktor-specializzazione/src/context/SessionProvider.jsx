@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import SessionContext from "./SessionContext"
 import supabase from "../supabase/supabase-client"
 
-export default function SessionProvider({ children }) {
+function SessionProvider({ children }) {
     const [session, setSession] = useState(null);
 
     useEffect(() => {
@@ -32,4 +32,5 @@ export default function SessionProvider({ children }) {
             {children}
         </SessionContext.Provider>
     );
-    }
+}
+export default SessionProvider;

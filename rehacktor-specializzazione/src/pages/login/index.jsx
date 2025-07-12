@@ -5,8 +5,10 @@ import { FormSchemaLogin, ConfirmSchemaLogin, getErrors, getFieldError} from "..
 import { Form, Input, Button } from "@heroui/react";
 import { Link } from "react-router-dom";
 import toast from 'react-hot-toast';
+import { useTranslation } from 'react-i18next';
 
-export function LoginPage() {
+function LoginPage() {
+    const { t } = useTranslation();
     const navigate = useNavigate();
     const [formSubmitted, setFormSubmitted] = useState(false);
     const [formErrors, setFormErrors] = useState({});
@@ -30,9 +32,9 @@ export function LoginPage() {
                 password: data.password
             });
             if (error) {
-                toast.error("Login failed.");
+                toast.error(t("Login failed"));
             } else {
-                toast.success("Login successful.");
+                toast.success(t("Login successful"));
                 await new Promise((resolve) => setTimeout(resolve, 1000));
                 navigate("/");
             }
@@ -61,14 +63,13 @@ export function LoginPage() {
     
     return (
         <div className="max-w-md mx-auto mt-25 p-6 bg-white shadow-xl rounded-xl space-y-6">
-        <h2 className="text-3xl font-bold text-center">Login</h2>
+        <h2 className="text-3xl font-bold text-center">{t('Login')}</h2>
         
         <Form
         onSubmit={onSubmit}
         validationBehavior="aria"
         validationErrors={formErrors}
-        className="space-y-4"
-        >
+        className="space-y-4">
         <Input
         name="email"
         label="Email"
@@ -80,33 +81,32 @@ export function LoginPage() {
         onBlur={onBlur("email")}
         aria-invalid={isInvalid("email")}
         isInvalid={!!formErrors.email}
-        errorMessage={formErrors.email}
-        />
+        errorMessage={formErrors.email}/>
         
         <Input
         name="password"
         label="Password"
         type="password"
-        placeholder="Your secure password"
+        placeholder={t('Your secure password')}
         isRequired
         value={formState.password}
         onChange={setField("password")}
         onBlur={onBlur("password")}
         aria-invalid={isInvalid("password")}
         isInvalid={!!formErrors.password}
-        errorMessage={formErrors.password}
-        />
+        errorMessage={formErrors.password}/>
         
         <Button type="submit" variant="shadow" className="w-full">
-        Login
+        {t('Login')}
         </Button>
         </Form>
         <p className="text-center text-sm text-gray-600">
-            Don't have an account?{" "}
+            {t('Don\'t have an account?')}{" "}
         <Link to="/register" className="text-blue-500 hover:underline" >
-            Register
+            {t('Register')}
         </Link>
         </p>  
         </div>
     );
 }
+export default LoginPage;

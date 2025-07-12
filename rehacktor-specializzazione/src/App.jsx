@@ -3,7 +3,7 @@ import SessionProvider from './context/SessionProvider';
 import FavoritesProvider from './context/FavoritesProvider';
 import { Toaster } from 'react-hot-toast';
 
-export default function App() {
+function App() {
   return (
     <SessionProvider>
       <FavoritesProvider>
@@ -13,3 +13,4 @@ export default function App() {
     </SessionProvider>
   );
 }
+export default App;

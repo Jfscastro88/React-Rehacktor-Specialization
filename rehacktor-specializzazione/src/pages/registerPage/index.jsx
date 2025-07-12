@@ -4,6 +4,7 @@ import supabase from "../../supabase/supabase-client";
 import { ConfirmSchema, getErrors, getFieldError } from "../../lib/validationForm";
 import { Form, Input, Button } from "@heroui/react";
 import { Link } from "react-router-dom";
+import toast from 'react-hot-toast';
 
 export default function RegisterPage() {
     const navigate = useNavigate();
@@ -39,9 +40,9 @@ export default function RegisterPage() {
                 }
             });
             if (error) {
-                alert("Signing up error 👎🏻!");
+                toast.error("Signing up error !");
             } else {
-                alert("Signed up 👍🏻!");
+                toast.success("Signed up !");
                 await new Promise((resolve) => setTimeout(resolve, 1000));
                 navigate("/");
             }

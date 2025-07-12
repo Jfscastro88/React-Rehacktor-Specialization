@@ -6,13 +6,12 @@ import { ErrorBoundary } from "react-error-boundary";
 function ErrorFallback({ error, resetErrorBoundary }) {
     return (
         <div role="alert" className="p-6 bg-red-50 text-red-700">
-        <p>⚠️ Qualcosa è andato storto:</p>
+        <p>⚠️ Something went wrong:</p>
         <pre className="mt-2 text-sm">{error.message}</pre>
         <button
         className="mt-4 px-4 py-2 bg-red-600 text-white rounded"
         onClick={resetErrorBoundary}
-        >
-        Riprova
+        >Try again
         </button>
         </div>
     );

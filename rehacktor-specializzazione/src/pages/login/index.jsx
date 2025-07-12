@@ -4,6 +4,7 @@ import supabase from "../../supabase/supabase-client";
 import { FormSchemaLogin, ConfirmSchemaLogin, getErrors, getFieldError} from "../../lib/validationForm"
 import { Form, Input, Button } from "@heroui/react";
 import { Link } from "react-router-dom";
+import toast from 'react-hot-toast';
 
 export function LoginPage() {
     const navigate = useNavigate();
@@ -29,9 +30,9 @@ export function LoginPage() {
                 password: data.password
             });
             if (error) {
-                alert("Login failed.");
+                toast.error("Login failed.");
             } else {
-                alert("Login successful.");
+                toast.success("Login successful.");
                 await new Promise((resolve) => setTimeout(resolve, 1000));
                 navigate("/");
             }

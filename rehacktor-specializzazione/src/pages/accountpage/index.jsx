@@ -99,7 +99,7 @@ export default function AccountPage() {
         disabled={loading}
         className="flex mt-5 items-center px-4 py-2 bg-blue-100 text-blue-600 rounded hover:bg-blue-200 transition"
         >
-        <FontAwesomeIcon icon={faUpload} className="mr-2" /> Carica nuova foto
+        <FontAwesomeIcon icon={faUpload} className="mr-2" /> Upload new photo
         </button>
         </div>
         

@@ -142,9 +142,9 @@ export default function RegisterPage() {
         <Button type="submit" variant="shadow" className="w-full">Register</Button>
         </Form>
         <p className="mt-4 text-center text-sm text-gray-600">
-            Hai già un account?{" "}
+            Already have an account?{" "}
         <Link to="/login" className="text-blue-500 hover:underline">
-            Accedi
+            Log in
         </Link>
         </p>
         </div>

@@ -16,16 +16,16 @@ export default function ProfilePage() {
     return (
         <main className="max-w-4xl mx-auto mt-10 p-6 bg-white shadow-xl rounded-xl">
         <div className="flex items-center space-x-4 mb-6">
-        <h2 className="text-3xl font-bold">Ciao, {firstName}!</h2>
+        <h2 className="text-3xl font-bold">Welcome, {firstName}!</h2>
         </div>
         
         <details className="group" open>
         <summary className="flex justify-between items-center cursor-pointer text-lg font-semibold mb-4">
-        <span>I tuoi giochi preferiti</span>
+        <span>Your favorite games</span>
         <span className="transition-transform duration-200 group-open:rotate-180">🡇</span>
         </summary>
         {favorites.length === 0 ? (
-            <p className="text-gray-500">Non ci sono preferiti al momento...</p>
+            <p className="text-gray-500">There are no favorites at the moment...</p>
         ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {favorites.map((game) => (

@@ -50,7 +50,7 @@ export default function Chatbox({ data }) {
         <button
         type="submit"
         className="ml-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-2 transition">
-        Invia
+        Send
         </button>
         </form>
         </div>

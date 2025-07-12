@@ -11,8 +11,8 @@ function GenresDropdown (){
     return (
         <Dropdown backdrop="blur">
         <DropdownTrigger>
-        <Button variant="bordered" size="sm">
-        {loading ? "Loading…" : "Genres"}
+        <Button variant="bordered" size="md">
+        {loading ? "Loading…" : "Genres "}
         </Button>
         </DropdownTrigger>
         

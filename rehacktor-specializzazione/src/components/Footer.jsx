@@ -41,7 +41,7 @@ export default function Footer() {
         </div>
         
         <div className="mt-6 text-center text-gray-500 text-sm">
-        © {new Date().getFullYear()} GameNest. Tutti i diritti riservati.
+        © {new Date().getFullYear()} GameNest. All rights reserved.
         </div>
         </div>
         </footer>

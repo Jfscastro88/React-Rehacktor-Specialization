@@ -101,9 +101,9 @@ export function LoginPage() {
         </Button>
         </Form>
         <p className="text-center text-sm text-gray-600">
-            Non hai un account?{" "}
+            Don't have an account?{" "}
         <Link to="/register" className="text-blue-500 hover:underline" >
-            Registrati
+            Register
         </Link>
         </p>  
         </div>

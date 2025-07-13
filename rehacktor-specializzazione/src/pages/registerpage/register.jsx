@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 
-function RegisterPage() {
+function Registerpage() {
     const { t } = useTranslation();
     const navigate = useNavigate();
     const [formSubmitted, setFormSubmitted] = useState(false);
@@ -153,4 +153,4 @@ function RegisterPage() {
         </div>
     );
 };
-export default RegisterPage;
+export default Registerpage;

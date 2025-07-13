@@ -40,13 +40,14 @@ function Chatbox({ data }) {
         
         <div className="bg-white rounded-2xl shadow-inner overflow-hidden">
         <form onSubmit={handleMessageSubmit}
-        className="flex items-center p-4 border-t border-gray-200 bg-white rounded-b-lg">
+        className="flex items-center justify-center space-x-3 p-4 border-t border-gray-200 bg-white rounded-b-lg
+            max-w-md mx-auto">
         <ChatBubbleOvalLeftEllipsisIcon className="h-6 w-6 text-gray-400 mr-3" />
         
         <input type="text" name="message" placeholder={t('Write a message…')}
-        className="flex-1 border border-gray-300 rounded-full px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"/>
+        className="flex-1 text-center border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"/>
         
-        <button type="submit" className="ml-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full px-3 py-2 transition">
+        <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-2 transition">
         {t('Send')}
         </button>
         </form>

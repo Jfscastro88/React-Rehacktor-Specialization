@@ -5,7 +5,7 @@ import ErrorPage from "../pages/error/index.jsx";
 import GenrePage from "../pages/generepage/index.jsx";
 import GamePage from "../pages/gamepage/index.jsx";
 import SearchPage from "../pages/searchpage/index.jsx";
-import RegisterPage from "../pages/RegisterPage/Index.jsx";
+import RegisterPage from "../pages/registerpage/index.jsx";
 import LoginPage from "../pages/login/index.jsx";
 import AccountPage from "../pages/accountpage/index.jsx";
 import ProfilePage from "../pages/profile/index.jsx";

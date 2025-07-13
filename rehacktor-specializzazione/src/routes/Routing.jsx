@@ -1,14 +1,14 @@
 import { HashRouter, Routes, Route } from "react-router-dom";
-import HomePage from "../pages/homepage/index";
-import Layout from "../layout/Layout";
-import ErrorPage from "../pages/error/index";
-import GenrePage from "../pages/generepage/index";
-import GamePage from "../pages/gamepage/index";
-import SearchPage from "../pages/searchpage/index";
-import RegisterPage from "../pages/registerpage/index";
-import LoginPage from "../pages/login/index";
-import AccountPage from "../pages/accountpage/index";
-import ProfilePage from "../pages/profile/index";
+import HomePage from "../pages/homepage/index.jsx";
+import Layout from "../layout/Layout.jsx";
+import ErrorPage from "../pages/error/index.jsx";
+import GenrePage from "../pages/generepage/index.jsx";
+import GamePage from "../pages/gamepage/index.jsx";
+import SearchPage from "../pages/searchpage/index.jsx";
+import RegisterPage from "../pages/RegisterPage/Index.jsx";
+import LoginPage from "../pages/login/index.jsx";
+import AccountPage from "../pages/accountpage/index.jsx";
+import ProfilePage from "../pages/profile/index.jsx";
 
 function Routing() { 
     return (

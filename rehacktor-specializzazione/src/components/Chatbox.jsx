@@ -44,9 +44,9 @@ function Chatbox({ data }) {
         <ChatBubbleOvalLeftEllipsisIcon className="h-6 w-6 text-gray-400 mr-3" />
         
         <input type="text" name="message" placeholder={t('Write a message…')}
-        className="flex-1 border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"/>
+        className="flex-1 border border-gray-300 rounded-full px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300"/>
         
-        <button type="submit" className="ml-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-2 transition">
+        <button type="submit" className="ml-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full px-3 py-2 transition">
         {t('Send')}
         </button>
         </form>

@@ -63,14 +63,15 @@ function GamePage() {
             <>
             <button
             onClick={() => setChatOpen(!chatOpen)}
-            className="fixed bottom-6 mb-35 right-6 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-lg transition"
-            aria-label={chatOpen ? "Close chat" : "Open chat"}
-            >
+            className="fixed bottom-5 right-4 sm:bottom-6 sm:right-6 bg-blue-600 hover:bg-blue-700 text-white
+            p-3 sm:p-4 rounded-full shadow-lg transition"
+            aria-label={chatOpen ? "Close chat" : "Open chat"}>
             <ChatBubbleOvalLeftEllipsisIcon className="h-6 w-6" />
             </button>
             
             {chatOpen && (
-                <div className="fixed bottom-20 mb-15 right-6 w-full max-w-sm lg:max-w-md bg-white rounded-2xl shadow-lg flex flex-col overflow-hidden h-96">
+                <div className="fixed bottom-4 right-4 w-[90vw] sm:w-80 md:w-96 h-[70vh] bg-white rounded-2xl shadow-lg
+                flex flex-col overflow-hidden">
                 <div className="bg-gray-100 px-4 py-2 border-b border-gray-200">
                 <div className="flex justify-between items-center">
                 <h4 className="text-lg font-semibold text-gray-800">{t('Live Chat')}</h4>
